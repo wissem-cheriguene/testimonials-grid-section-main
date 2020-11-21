@@ -1,0 +1,14 @@
+$opacity: 0.5;
+// Item background
+$violet: hsl(263, 55%, 52%);
+$grayish-blue: hsl(217, 19%, 35%);
+$blackish-blue: hsl(219, 29%, 14%);
+$white: hsl(0, 0%, 100%);
+$light-grey:hsl(0, 0%, 81%);
+// Box-shadox
+$box-shadow: $light-grey;
+@mixin setTextColor($backgroundColor) {
+  @if (lightness($backgroundColor) > 80%) {
+    color: $grayish-blue;
+  }
+}

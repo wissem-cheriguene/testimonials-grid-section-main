@@ -1,0 +1,181 @@
+/*
+
+# Front-end Style Guide
+
+## Layout
+
+The designs were created to the following widths:
+
+- Mobile: 375px
+- Desktop: 1440px
+
+## Colors
+
+### Primary
+
+Moderate violet: hsl(263, 55%, 52%)
+Very dark grayish blue: hsl(217, 19%, 35%)
+Very dark blackish blue: hsl(219, 29%, 14%)
+White: hsl(0, 0%, 100%)
+
+### Neutral
+
+Light gray: hsl(0, 0%, 81%)
+Light grayish blue: hsl(210, 46%, 95%)
+
+Note for text colors:
+
+1. "Verified Graduate" has the same color as the person's name with 50% opacity
+2. Review paragraphs inside the quotations have the same color as well, but are at 70% opacity
+
+## Typography
+
+### Body Copy
+
+- Font size: 13px
+
+### Font
+
+- Family: [Barlow Semi Condensed](https://fonts.google.com/specimen/Barlow+Semi+Condensed)
+- Weights: 500, 600
+
+*/
+@import 'reset';
+@import 'vars';
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
+
+body {
+  font-size: 13px;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  background-color: hsl(210, 46%, 95%);
+  color: $white;
+  line-height: 1.2;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.item {
+  width: 80%;
+  text-align: center;
+  margin: 2em auto;
+  border-radius: .4em;
+  padding: 2em 1.5em;
+  display: flex;
+  flex-direction: column;
+  z-index: 300;
+  &--white {
+      background-color: $white;
+      @include setTextColor($white);
+      box-shadow: 6px 24px 44px $box-shadow;
+  }
+  &--violet {
+    z-index: -300;
+    background-color: $violet;
+    @include setTextColor($violet);
+    .item-user-details__image {
+      border: 2px solid rgba($white,$opacity);
+    }
+    position: relative;
+    &::after {
+      z-index: -50;
+      position: absolute;
+      content:"";
+      background: url('../images/bg-pattern-quotation.svg');
+      background-repeat: no-repeat;
+      width: 104px;
+      height: 102px;
+      top:0;
+      right: 5%;      
+    }
+  }
+  &--grayish-blue {
+    background-color: $grayish-blue;
+    @include setTextColor($grayish-blue);
+  }
+  &--blackish-blue {
+    background-color: $blackish-blue;
+    @include setTextColor($blackish-blue);
+    .item-user-details__image {
+      border: 2px solid $violet;
+    }
+  }
+
+  .item-title {
+    order:2;
+    margin: 1em 0;
+    font-size: 2em;
+    text-align: left;
+    font-weight: 600;
+  }
+  .item-user-details {
+    order:1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    &__image {
+      margin-right: 1em;
+      border-radius: 50%;
+      width: 30px;
+    }
+    &__flex {
+      text-align: left;
+    }
+    &__name {
+      width: 100%;
+    }
+    &__status {
+      opacity: $opacity;
+      font-size: .8em;
+    }
+  }
+  .item-comments {
+    order:3;
+    opacity: $opacity;
+    text-align: left;
+    line-height: 1.5;
+  }
+}
+
+.attribution {
+  width: 100%;
+}
+
+@media screen and(min-width: 1024px) {
+  body{
+    font-size: 14px;
+  }
+  main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+    'item1 item1 item2 item5'
+    'item3 item4 item4 item5';
+    grid-gap: 2em;
+    width: 80%;
+  }
+
+  .item {
+    width: auto;
+    margin: 0;
+  }
+
+  .item1{
+    grid-area: item1;
+  }
+  .item2{
+    grid-area: item2;
+  }
+  .item3{
+    grid-area: item3;
+  }
+  .item4{
+    grid-area: item4;
+  }
+  .item5{
+    grid-area: item5;
+  }
+  
+}
